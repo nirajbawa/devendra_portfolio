@@ -14,7 +14,7 @@ class Uploader {
         try {
             const result = await cloudinary.v2.api.resources({
                 type: 'upload',
-                prefix: 'Portfolio_Web_App/', // Use prefix instead of folder
+                prefix: 'devendra_Portfolio/', // Use prefix instead of folder
                 max_results: 500
             });
 
@@ -48,7 +48,7 @@ class Uploader {
                 if (req.files.imgfile.mimetype == "image/jpeg" || req.files.imgfile.mimetype == "image/png" || req.files.imgfile.mimetype == "image/jpg" || req.files.imgfile.mimetype == "image/x-icon" || req.files.imgfile.mimetype == "image/webp") {
                     if (req.files.imgfile.size < 101000000) {
                         const file = req.files.imgfile;
-                        const result = await cloudinary.v2.uploader.upload(file.tempFilePath, { folder: "/Portfolio_Web_App/", public_id: this.safeFilename(this.getExt(req.files.imgfile.name)[0]) });
+                        const result = await cloudinary.v2.uploader.upload(file.tempFilePath, { folder: "/devendra_Portfolio/", public_id: this.safeFilename(this.getExt(req.files.imgfile.name)[0]) });
                         res.send({ msg: "Success, Image uploaded!" });
                     } else {
                         res.status(404).send({ msg: "error : file size is too large make sure your file is less than 100 MB" });
